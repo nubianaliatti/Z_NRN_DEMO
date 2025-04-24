@@ -1,0 +1,46 @@
+managed implementation in class ZBP_R_TNRN_AUTO unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_TNRN_AUTO alias ZrTnrnAuto
+persistent table ZTNRN_AUTO
+draft table ZTNRN_AUTO_D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( readonly )
+   Orderid,
+   Createdby,
+   Createdat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( numbering : managed )
+   Orderid;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTNRN_AUTO
+  {
+    Orderid = orderid;
+    Customer = customer;
+    Vendor = vendor;
+    Company = company;
+    Createdby = createdby;
+    Createdat = createdat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

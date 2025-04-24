@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TNRN_AUTO'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TNRN_AUTO'
+  }
+}
+define service ZUI_TNRN_AUTO_O4 provider contracts odata_v4_ui {
+  expose ZC_TNRN_AUTO;
+}
